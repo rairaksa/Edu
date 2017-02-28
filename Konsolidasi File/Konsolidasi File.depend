@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1488268790 source:c:\users\raydeon\documents\codeblock\konsolidasi file\main.cpp
+	<iostream>
+	<fstream>
+	<cstring>
+
