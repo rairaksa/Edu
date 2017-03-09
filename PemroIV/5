@@ -1,0 +1,170 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Mamalia {
+private :
+    string nama;
+    string warna;
+    string tempatHidup;
+    int umur;
+
+public :
+    void setNama(string value) {
+        nama = value;
+    }
+    void setWarna(string value) {
+        warna = value;
+    }
+    void setTempatHidup(string value) {
+        tempatHidup = value;
+    }
+    void setUmur(int value) {
+        umur = value;
+    }
+
+    string getNama() {
+        return nama;
+    }
+    string getWarna() {
+        return warna;
+    }
+    string getTempatHidup() {
+        return tempatHidup;
+    }
+    int getUmur() {
+        return umur;
+    }
+    string getKlasifikasiUmur() {
+        if(umur < 5) {
+            return "Muda";
+        }
+        else if(umur < 10) {
+            return "Remaja";
+        }
+        else {
+            return "Tua";
+        }
+    }
+    int getPanjangNama() {
+       return nama.size();
+    }
+    void information() {
+        cout << "Nama : " << getNama() << endl;
+        cout << "Warna : " <<  getWarna() << endl;
+        cout << "Tempat Hidup : " <<  getTempatHidup() << endl;
+        cout << "Umur : " <<  getUmur() << endl;
+        cout << "Klasifikasi Umur : " <<  getKlasifikasiUmur() << endl;
+        // cout << "Panjang Nama : " <<  getPanjangNama() << endl << endl;
+        cout << "Panjang Nama : " <<  getPanjangNama() << endl;
+    }
+};
+
+class Paus: public Mamalia {
+private :
+    string jenis;
+public :
+    void setJenis(string value) {
+        jenis = value;
+    }
+    string getJenis() {
+        return jenis;
+    }
+};
+
+int main()
+{
+    int latihan = 2;
+    if(latihan == 1) {
+        cout << "Classification of Mamal Animals" << endl << endl;
+
+        Mamalia mamalia1, mamalia2, mamalia3;
+        mamalia1.setNama("Lumba-lumba");
+        mamalia1.setWarna("Abu-abu");
+        mamalia1.setTempatHidup("Laut");
+        mamalia1.setUmur(20);
+
+        mamalia2.setNama("Kucing");
+        mamalia2.setWarna("Coklat");
+        mamalia2.setTempatHidup("Darat");
+        mamalia2.setUmur(5);
+
+        mamalia3.setNama("Tikus");
+        mamalia3.setWarna("Hitam");
+        mamalia3.setTempatHidup("Got");
+        mamalia3.setUmur(1);
+
+        mamalia1.information();
+        mamalia2.information();
+        mamalia3.information();
+    }
+    else if (latihan == 2) {
+
+        Paus paus[5];
+
+        paus[0].setJenis("Orca");
+        paus[0].setNama("Beckham");
+        paus[0].setWarna("Hitam");
+        paus[0].setTempatHidup("Laut");
+        paus[0].setUmur(5);
+
+        paus[1].setJenis("Biru");
+        paus[1].setNama("Cantona");
+        paus[1].setWarna("Coklat");
+        paus[1].setTempatHidup("Laut");
+        paus[1].setUmur(9);
+
+        paus[2].setJenis("Biru");
+        paus[2].setNama("Giggs");
+        paus[2].setWarna("Putih");
+        paus[2].setTempatHidup("Laut");
+        paus[2].setUmur(3);
+
+        paus[3].setJenis("Pembunuh");
+        paus[3].setNama("Cole");
+        paus[3].setWarna("Hitam");
+        paus[3].setTempatHidup("Laut");
+        paus[3].setUmur(10);
+
+        paus[4].setJenis("Orca");
+        paus[4].setNama("Solksjaer");
+        paus[4].setWarna("Putih");
+        paus[4].setTempatHidup("Laut");
+        paus[4].setUmur(3);
+
+        int orca = 0;
+        int biru = 0;
+        int pembunuh = 0;
+        int lain = 0;
+
+        int arrSize = sizeof(paus) / sizeof(paus[0]);
+
+        int kind[0];
+
+        for(int i=0;i<arrSize;i++) {
+            if(paus[i].getJenis() == "Orca") {
+                orca++;
+            }
+            else if(paus[i].getJenis() == "Pembunuh") {
+                pembunuh++;
+            }
+            else if(paus[i].getJenis() == "Biru") {
+                biru++;
+            }
+            else {
+                lain++;
+            }
+
+            paus[i].information();
+            cout << "Jenis : " << paus[i].getJenis() << endl << endl;
+        }
+
+        cout << "Jumlah paus orca : " << orca << endl;
+        cout << "Jumlah paus pembunuh : " << pembunuh << endl;
+        cout << "Jumlah paus biru : " << biru << endl;
+        cout << "Jumlah paus lain : " << lain << endl;
+
+        // cout << endl << arrSize;
+    }
+}
