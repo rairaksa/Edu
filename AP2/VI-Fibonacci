@@ -1,0 +1,46 @@
+#include <iostream>
+
+using namespace std;
+
+// fibonacci with sum
+void fibonacci(int term) {
+
+    cout << "Fibonacci Iterasi" << endl;
+    cout << "Jumlah term : " << term << endl;
+
+    int before = 0;
+    int now;
+    int temp;
+    int total = 0;
+
+    term--;
+
+    for(int i=0;i<term;i++) {
+        // jika iterasi satu maka munculkan 0
+        if(i == 0) {
+            now = 1;
+            cout << before << endl << now << endl;
+        }
+        // munculkan nilai (sebelum tambah sekarang);
+        else {
+            cout << before + now << endl;
+            temp = before;
+            before = now;
+            now = temp + now;
+        }
+
+        total = total + now;
+    }
+
+    cout << "Total : " << total << endl;
+}
+
+int main()
+{
+    int term;
+
+    cout << "Masukkan jumlah term fibonacci : ";
+    cin >> term;
+
+    fibonacci(term);
+}
