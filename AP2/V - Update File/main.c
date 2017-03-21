@@ -13,8 +13,8 @@ int main()
     FILE *arsipMatkul;
     FILE *arsipMatkulUpdate;
 
-    arsipMatkul = fopen("V-ArsipMatKulA.txt", "r");
-    arsipMatkulUpdate = fopen("V-ArsipMatKulAUpdate.txt", "w");
+    arsipMatkul = fopen("ArsipMatKulA.txt", "r");
+    arsipMatkulUpdate = fopen("ArsipMatKulAUpdate.txt", "w");
 
     fscanf(arsipMatkul, "%s %s %s\n", &a.prodi, &a.nama, &a.nilai);
 
