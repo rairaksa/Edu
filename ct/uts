@@ -56,3 +56,18 @@ void split() {
 }
 
 no 3
+int faktorial(int nilai) {
+	int buff;
+
+	if(nilai <= 1) return 1;
+
+	buff = nilai * faktorial(nilai - 1);
+	return buff;
+}
+
+int main()
+{
+ 	//minmax();
+ 	//plit();
+ 	cout << faktorial(5);
+}
