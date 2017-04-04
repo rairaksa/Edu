@@ -1,5 +1,34 @@
-no 1
+no1
+1. Perbedaan Array dan Struct :
 
+    Array adalah struktur data yang tipe data dari elemen-elemennya harus sama (homogen) dan elemen-elemennya diakses atau diidentifikasi menggunakan indeks.
+    Struct adalah struktur data yang tipe data dari elemen-elemennya tidak harus sama (heterogen) dan elemen-elemennya diakses atau diidentifikasi menggunakan identifier atau nama variabel.
+
+
+2. Sequential File. Sequential file merupakan suatu cara ataupun suatu metode penyimpanan dan pembacaan data yang dilakukan secara berurutan.
+
+3.  1. tanpa separator, artinya kita mengenali adanya kelompok yang lain
+karena kunci berubah.
+2. Dengan separator, artinya ada rekaman tertentu yang memisahkan
+satu kelompok dengan kelompok lainnya. Separator ini boleh satu
+rekaman atau lebih dari rekaman. pada contoh berikut, separator adalah "kartu putih".
+
+4. fopen()
+merupakan salah satu operasi file yang berfungsi untuk mengkaktifkan sebuah file. hal ini dailakukan agar file tersebut dapat diakses.
+Contoh : FILE *fopen(char *namafile, char *mode);
+
+fscanf()
+merupakan suatu operasi file yang berguna untuk membaca kembali sebuah data bilangan yang telah disimpa dalam sebuah file dengan keadaan diformat.
+Contoh : fscanf(ptr_file, “string kontrol”, daftar argumen);
+
+fprintf()
+berfungsi untuk menimpan seubuah data bilangan dalam sebuah file dalam keadaan diformat.
+Contoh : fprintf(ptr_file, “string kontrol”, daftar argumen);
+
+5.fungsi rekursif adalah suatu fungsi yang memanggil dirinya sendiri. Jadi di dalam suatu fungsi rekursif terdapat pemanggilan terhadap dirinya sendiri.
+
+no2
+A
 void minmax() {
     // buat variable untuk menampung nilai panjang array
     int panjang;
@@ -33,8 +62,7 @@ void minmax() {
         cout << "EQUAL";
     }
 }
-
-no 2
+B
 void split() {
 	 FILE * student;
 	 FILE * pisah;
@@ -54,8 +82,7 @@ void split() {
 	 }
 	 while(!feof(student));
 }
-
-no 3
+C
 int faktorial(int nilai) {
 	int buff;
 
