@@ -1,0 +1,58 @@
+no 1
+
+void minmax() {
+    // buat variable untuk menampung nilai panjang array
+    int panjang;
+    // masukkan panjang array
+    cin >> panjang;
+    // buat variable untuk menampung total array
+    int data[panjang];
+    // buat variable untuk menampung counter odd dan even
+    int odd = 0;
+    int even = 0;
+    // loop untuk memasukkan angka terhadap index array
+    for(int i = 0;i<panjang;i++) {
+        cin >> data[i];
+         // jika input genap maka
+        //cout << data[i] << endl;
+        if(data[i]%2==0) {
+            even++;
+        }
+        else {
+            odd++;
+        }
+    }
+    // munculkan odd atau even
+    if(odd > even) {
+        cout << "ODD";
+    }
+    else if(odd < even) {
+        cout << "EVEN";
+    }
+    else {
+        cout << "EQUAL";
+    }
+}
+
+no 2
+void split() {
+	 FILE * student;
+	 FILE * pisah;
+
+	 struct {
+	 		char nama[15];
+			char umur[3];
+			char kelas[3];
+	 }data;
+
+	 student = fopen("student.txt", "r");
+
+	 do {
+	 	 fscanf(student, "%s %s %s", &data.nama, &data.umur, &data.kelas);
+	 	 pisah = fopen(data.kelas, "a");
+	 	 fprintf(pisah, "%s %s %s\n", data.nama, data.umur, data.kelas);
+	 }
+	 while(!feof(student));
+}
+
+no 3
