@@ -1,0 +1,112 @@
+#include <iostream>
+
+using namespace std;
+
+class Shape {
+public :
+    string nama;
+    string jenis_bentuk;
+
+    float luas() {
+        return 0;
+    }
+};
+
+class Persegi_Panjang : public Shape {
+private :
+    int panjang;
+    int lebar;
+
+public :
+    void setPanjang(int value) {
+        panjang = value;
+    }
+    void setLebar(int value) {
+        lebar = value;
+    }
+    int getPanjang() {
+        return panjang
+    }
+    int getLebar() {
+        return lebar;
+    }
+
+    float luas_pp() {
+        return panjang*lebar;
+    }
+};
+
+class Lingkaran : public Shape {
+public :
+    int r;
+    float phi;
+
+    float luas_link() {
+        return (phi*(r*r));
+    }
+};
+
+class Tabung : public Persegi_Panjang, public Lingkaran {
+private :
+    int tinggi;
+
+public :
+    void setNama(string value) {
+        Lingkaran::nama = value;
+    }
+    void setBentuk(string value) {
+        Lingkaran::jenis_bentuk = value;
+    }
+    void setR(int value) {
+        Lingkaran::r = value;
+    }
+    void setPhi(int value) {
+        Lingkaran::phi = value;
+    }
+    void setTinggi(int value) {
+        Tabung::tinggi = value;
+    }
+
+    string getNama() {
+        return Lingkaran::nama;
+    }
+    string getBentuk() {
+        return Lingkaran::jenis_bentuk;
+    }
+    int getR() {
+        return Lingkaran::r;
+    }
+    int getPhi() {
+        return Lingkaran::phi;
+    }
+    int getTinggi() {
+        return Tabung::tinggi;
+    }
+
+    float volume() {
+        return ((phi*(r*r))*tinggi);
+    }
+    float luas_permukaan() {
+        return ((2*phi*r)*tinggi)+(phi*(r*r));
+    }
+};
+
+int main()
+{
+    Tabung tabung;
+
+    tabung.setNama("Gentong");
+    tabung.setBentuk("Silinder");
+    tabung.setR(7);
+    tabung.setPhi(3.14);
+    tabung.setTinggi(50);
+
+    cout << tabung.getNama() << endl;
+    cout << tabung.getBentuk() << endl;
+    cout << "r = " << tabung.getR() << endl;
+    cout << "phi = " << tabung.getPhi() << endl;
+    cout << "tinggi = " << tabung.getTinggi() << endl;
+    cout << "Luas Lingkaran = " << tabung.luas_link() << "cm2" << endl;
+    cout << "Luas Permukaan = " << tabung.luas_permukaan() << "cm2" << endl;
+    cout << "Volume = " << tabung.volume() << "cm3" << endl;
+}
