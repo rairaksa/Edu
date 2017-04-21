@@ -1,0 +1,46 @@
+#include <iostream>
+
+using namespace std;
+
+int factorial(int n) {
+    if(n<2) {
+        return 1;
+    }
+    else {
+        return n*factorial(n-1);
+    }
+}
+
+int pangkat(int x, int y) {
+    if(y == 0) {\
+        return 1;
+    }
+    else {
+        return x*pangkat(x, y-1);
+    }
+}
+
+int main()
+{
+    int app;
+    cout << "1. Faktorial" << endl << "2. Pangkat" << endl << "Masukkan pilihan program : ";
+    cin >> app;
+
+    if(app == 1) {
+        int n;
+        cout << "Masukkan angka faktorial : ";
+        cin >> n;
+        cout << "Hasil faktorial : " << factorial(n);
+    }
+    else if(app == 2) {
+        int x;
+        int y;
+
+        cout << "Masukkan angka dasar : ";
+        cin >> x;
+        cout << "Masukkan nilai pangkat : ";
+        cin >> y;
+        cout << "Hasil pangkat : " << pangkat(x,y);
+    }
+    return 0;
+}
