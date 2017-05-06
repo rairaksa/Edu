@@ -2,83 +2,109 @@
 
 using namespace std;
 
-void MergeSort(int low, int high);
-void Merge(int, int, int);
+int a[50];
+bool isAscending;
 
-int A[50];
+void merge(int,int,int);
 
-int main() {
-	int i, elemen;
-
-    cout << "Berapa banyak elemen yang ingin disusun ? "; cin >> elemen;
-    cout << endl;
-    cout << "Masukkan " << elemen << " elemen: \n"; cout << endl;
-
-    for(i=1;i<=elemen;i++) {
-        cout << "Elemen ke-" << i << " = ";
-        cin >> A[i];
-    }
-
-    cout << endl;
-
-    MergeSort(1, elemen);
-
-    cout << endl;
-
-    cout << "Setelah di mergesort : \n\n";
-
-    for(i=1;i<=elemen;i++) {
-        cout << A[i] << " ";
-    }
-
-    cout << endl << endl;
-
-    return 0;
-}
-
-void MergeSort(int low, int high) {
+void merge_sort(int low,int high) {
     int mid;
 
     if(low<high) {
-        mid = (low+high)/2;
-        MergeSort(low, mid);
-        MergeSort(mid+1, high);
-        Merge(low, mid, high);
+        mid = low + (high-low)/2;
+        merge_sort(low,mid);
+        merge_sort(mid+1,high);
+        merge(low,mid,high);
     }
 }
 
-void Merge(int low, int mid, int high) {
-    int h, i, j, k, b[50];
+void merge(int low,int mid,int high) {
 
+    int h,i,j,b[50],k;
     h=low;
     i=low;
     j=mid+1;
 
     while((h<=mid)&&(j<=high)) {
-        if(A[h]<A[j]) {
-            b[i]=A[h];
+        if(isAscending) {
+            if(a[h]<=a[j]) {
+                b[i]=a[h];
+                h++;
+            }
+            else {
+                b[i]=a[j];
+                j++;
+            }
         }
         else {
-            b[i]=A[j];
-            j++;
+            if(a[h]>=a[j]) {
+                b[i]=a[h];
+                h++;
+            }
+            else {
+                b[i]=a[j];
+                j++;
+            }
         }
         i++;
     }
 
     if(h>mid) {
         for(k=j;k<=high;k++) {
-            b[i] = A[k];
+            b[i]=a[k];
             i++;
         }
     }
     else {
         for(k=h;k<=mid;k++) {
-            b[i] = A[k];
+            b[i]=a[k];
             i++;
         }
     }
 
     for(k=low;k<=high;k++) {
-        A[k] = b[k];
+        a[k]=b[k];
     }
+}
+
+int main()
+{
+    int elemen,i,mode;
+
+    cout << "Merge Sort Program" << endl;
+    cout << "Mode penyusunan mana yang akan dipilih? " << endl << "1. Ascending" << endl << "2. Descending" << endl;
+    cin >> mode;
+    if(mode == 1) {
+        isAscending = true;
+    }
+    else if(mode == 2) {
+        isAscending = false;
+    }
+    else {
+        return 0;
+    }
+    cout << endl;
+    cout << "Berapa banyak elemen yang ingin disusun? ";
+    cin >> elemen;
+    cout << endl;
+    cout << "Masukkan " << elemen << " elemen"<<endl;
+
+    for(i=1;i<=elemen;i++) {
+        cout << "Masukkan elemen ke-" << i << " : ";
+        cin >> a[i] ;
+    }
+
+    merge_sort(1,elemen);
+
+    cout << endl;
+    cout << "Setelah di mergesort : " << endl;
+    cout << endl;
+
+    for(i=1;i<=elemen;i++) {
+        cout << a[i] << " ";
+    }
+
+    cout << endl;
+
+    return 0;
 }
