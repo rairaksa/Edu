@@ -1,0 +1,127 @@
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+#include <cmath>
+
+using namespace std;
+
+int main();
+
+void first() {
+    int mode;
+
+    cout << "1. Stream Output\n2. Stream Input\n3. Set Precision" << endl;
+    cin >> mode;
+
+    if(mode == 1) {
+        char *const word = "again";
+
+        cout << "value of word is : " << word << endl
+        << "value of static_cast< void * >( word ) is: "
+        << static_cast< void * > ( word ) << endl;
+    }
+    else if(mode == 2) {
+       int character; // use int, because char cannot represent EOF
+         // prompt user to enter line of text
+         cout << "Before input, cin.eof() is " << cin.eof() << endl
+         << "Enter a sentence followed by end-of-file:" << endl;
+
+         // use get to read each character; use put to display it
+         while ( ( character = cin.get() ) != EOF ) // EOF undefined
+            cout.put( character );
+
+            // display end-of-file character
+            cout << "\nEOF in this system is: " << character << endl;
+            cout << "After input of EOF, cin.eof() is " << cin.eof() << endl;
+    }
+    else if(mode == 3) {
+        double root2 = sqrt( 2.0 ); // calculate square root of 2
+        int places; // precision, vary from 0-9
+
+        cout << "Square root of 2 with precisions 0-9." << endl
+        << "Precision set by ios_base member function "
+        << "precision:" << endl;
+        cout << fixed; // use fixed-point notation
+        // display square root using ios_base function precision
+        for ( places = 0; places <= 9; places++ )
+        {
+        cout << root2 << endl;
+        } // end for
+
+        cout << "\nPrecision set by stream manipulator "
+        << "setprecision:" << endl;
+        // set precision for each digit, then display square root
+        for ( places = 0; places <= 9; places++ )
+        cout << setprecision( places ) << root2 << endl;
+
+    }
+    else {
+        main();
+    }
+}
+
+void second() {
+    // A-Z = 65 - 90
+    for(int i=65;i<=90;i++) {
+        cout.put(i).put('\n');
+    }
+    // a-z = 97 - 123
+    for(int i=97;i<=122;i++) {
+        cout.put(i).put('\n');
+    }
+}
+
+void third() {
+
+}
+
+class Arithmatics {
+public :
+    double tambah(double a, double b) {
+        return a+b;
+    }
+
+    double kurang(double a, double b) {
+        return a-b;
+    }
+
+    double kali(double a, double b) {
+        return a*b;
+    }
+
+    double bagi(double a, double b) {
+        return sqrt(a/b);
+    }
+};
+
+int main()
+{
+    int mode;
+
+    cout << "1. Coba semua program\n2. Tampilkan A-Z dan a-z dengan ASCII\n3. Program input 5 line\n4. Class Arithmatics\n5. Keluar" << endl;
+    cout << "Silahkan pilih mode program : ";
+    cin >> mode;
+
+    if(mode == 1) {
+        first();
+        main();
+    }
+    else if(mode == 2) {
+        second();
+        main();
+    }
+    else if(mode == 3) {
+        third();
+        main();
+    }
+    else if(mode == 4) {
+        Arithmatics aritmatika;
+
+        cout << aritmatika.tambah(13,5) << endl;
+        cout << aritmatika.kurang(13,5) << endl;
+        cout << aritmatika.kali(13,5) << endl;
+        cout << setprecision(3) << aritmatika.bagi(13,5) << endl;
+
+        main();
+    }
+}
