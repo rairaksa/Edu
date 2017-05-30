@@ -1,0 +1,134 @@
+#include <iostream>
+
+using namespace std;
+
+class Artis {
+protected :
+    string nama, alamat, label;
+    char kelamin;
+    int jumlah_lagu, jumlah_album;
+};
+
+class Manusia : public Artis {
+public :
+    void setNama(string value) {
+        nama = value;
+    }
+    void setAlamat(string value) {
+        alamat = value;
+    }
+    void setLabel(string value) {
+        label = value;
+    }
+    void setKelamin(char value) {
+        kelamin = value;
+    }
+    void setJumlahLagu(int value) {
+        jumlah_lagu = value;
+    }
+    void setJumlahAlbum(int value) {
+        jumlah_album = value;
+    }
+
+    string getNama() {
+        return nama;
+    }
+    string getAlamat() {
+        return alamat;
+    }
+    string getLabel() {
+        return label;
+    }
+    char getKelamin() {
+        return kelamin;
+    }
+    int getJumlahLagu() {
+        return jumlah_lagu;
+    }
+    int getJumlahAlbum() {
+        return jumlah_album;
+    }
+    void print() {
+        cout << endl;
+        cout << "Data Artis" << endl;
+        cout << "Nama : " << getNama() << endl;
+        cout << "Alamat : " << getAlamat() << endl;
+        cout << "Label : " << getLabel() << endl;
+        cout << "Kelamin : " << getKelamin() << endl;
+        cout << "Jumlah Lagu : " << getJumlahLagu() << endl;
+        cout << "Jumlah Album : " << getJumlahAlbum() << endl;
+    }
+};
+
+int main()
+{
+    int program;
+
+    // deskripsi program
+    cout << "Silahkan pilih program" << endl;
+    cout << "1.\n2.\n3.\n4.\n5.\n";
+
+    cin >> program;
+
+    if(program == 1) {
+
+        // input nama
+        // input alamat
+        // input label
+        // input kelamin
+        // input jumlah_lagu
+        // input jumlah_album
+
+        // declare attribute
+        string nama, alamat, label;
+        char kelamin;
+        int jumlah_lagu, jumlah_album;
+
+        // declare class
+        Manusia manusia;
+
+        // set internal attribute
+        cout << "Nama : "; cin >> nama;
+        cout << "Alamat : "; cin >> alamat;
+        cout << "Label : "; cin >> label;
+        cout << "Kelamin (L/P) : "; cin >> kelamin;
+        cout << "Jumlah Lagu : "; cin >> jumlah_lagu;
+        cout << "Jumlah Album : "; cin >> jumlah_album;
+
+        // set all attribute
+        manusia.setNama(nama);
+        manusia.setAlamat(alamat);
+        manusia.setLabel(label);
+        manusia.setKelamin(kelamin);
+        manusia.setJumlahLagu(jumlah_lagu);
+        manusia.setJumlahAlbum(jumlah_album);
+
+        // call method from class manusia to print info
+        manusia.print();
+
+        main();
+
+    }
+    else if(program == 2) {
+        template< typename T >
+
+        void printArray( const T * const array, int count) {
+            for(int i=0;i<count;i++) {
+                cout << array[i] << " ";
+                cout << endl;
+            }
+        }
+    }
+    else if(program == 3) {
+        ostream &operator << (ostream &output, const PhoneNumber &number) {
+            output << "(" << number.areaC
+        }
+    }
+    else if(program == 4) {
+
+    }
+    else if(program == 5) {
+
+    }
+    return 0;
+}
