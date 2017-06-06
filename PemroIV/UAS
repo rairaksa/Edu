@@ -2,6 +2,7 @@
 
 using namespace std;
 
+// No 1
 class Artis {
 protected :
     string nama, alamat, label;
@@ -60,13 +61,143 @@ public :
     }
 };
 
+// No 3
+class DataMHS {
+    friend ostream &operator<<( ostream &, const DataMHS & );
+    friend istream &operator>>( istream &, DataMHS & );
+
+private:
+     string npm; // 9-digit NPM
+     string nama; // 12-digit Nama
+};// end class DataMHS
+
+// No 4
+class Shape {
+public :
+    string nama;
+    string jenis_bentuk;
+
+    float luas() {
+        return 0;
+    }
+};
+
+class Persegi_Panjang : public Shape {
+private :
+    int panjang;
+    int lebar;
+
+public :
+    void setPanjang(int value) {
+        panjang = value;
+    }
+    void setLebar(int value) {
+        lebar = value;
+    }
+    int getPanjang() {
+        return panjang;
+    }
+    int getLebar() {
+        return lebar;
+    }
+
+    float luas_pp() {
+        return panjang*lebar;
+    }
+};
+
+class Lingkaran : public Shape {
+public :
+    int r;
+    float phi;
+
+    float luas_link() {
+        return (phi*(r*r));
+    }
+};
+
+class Tabung : public Persegi_Panjang, public Lingkaran {
+private :
+    int tinggi;
+
+public :
+    void setNama(string value) {
+        Lingkaran::nama = value;
+    }
+    void setBentuk(string value) {
+        Lingkaran::jenis_bentuk = value;
+    }
+    void setR(int value) {
+        Lingkaran::r = value;
+    }
+    void setPhi(int value) {
+        Lingkaran::phi = value;
+    }
+    void setTinggi(int value) {
+        Tabung::tinggi = value;
+    }
+
+    string getNama() {
+        return Lingkaran::nama;
+    }
+    string getBentuk() {
+        return Lingkaran::jenis_bentuk;
+    }
+    int getR() {
+        return Lingkaran::r;
+    }
+    int getPhi() {
+        return Lingkaran::phi;
+    }
+    int getTinggi() {
+        return Tabung::tinggi;
+    }
+
+    float volume() {
+        return ((phi*(r*r))*tinggi);
+    }
+    float luas_permukaan() {
+        return ((2*phi*r)*tinggi)+(phi*(r*r));
+    }
+};
+
+// No 5
+class Shape2 {
+public :
+    void luas();
+};
+
+class TwoDimensionalShape : public Shape2 {
+private :
+    int panjang;
+    int lebar;
+public :
+    void luas();
+};
+
+class Triangle : public TwoDimensionalShape {
+private :
+    int alas;
+    int tinggi;
+public :
+    void setAlas(int value) {
+        alas = value;
+    }
+    void setTinggi(int value) {
+        tinggi = value;
+    }
+    void luas() {
+        cout << (alas/2)*tinggi << "cm2";
+    }
+};
+
 int main()
 {
     int program;
 
     // deskripsi program
     cout << "Silahkan pilih program" << endl;
-    cout << "1.\n2.\n3.\n4.\n5.\n";
+    cout << "1.Data Artis\n2.Load Array\n3.Overloading ostream dan istream\n4.Hitung Luas Bidang\n5.Luas Segitiga\n";
 
     cin >> program;
 
@@ -107,9 +238,9 @@ int main()
         manusia.print();
 
         main();
-
     }
     else if(program == 2) {
+        /*
         template< typename T >
 
         void printArray( const T * const array, int count) {
@@ -118,17 +249,46 @@ int main()
                 cout << endl;
             }
         }
+        */
     }
     else if(program == 3) {
-        ostream &operator << (ostream &output, const PhoneNumber &number) {
-            output << "(" << number.areaC
-        }
+        DataMHS data; // create object phone
+        cout << "Masukkan Data MHS dengan Format NPM#Nama" << endl;
+        // cin >> phone invokes operator>> by implicitly issuing
+        // the global function call operator>>( cin, phone )
+        cin >> data;
+        cout << "Data yang baru saja dimasukkan: ";
+        // cout << phone invokes operator<< by implicitly issuing
+        // the global function call operator<<( cout, phone )
+        cout << data << endl;
     }
     else if(program == 4) {
 
+        Tabung tabung;
+
+        tabung.setNama("Gentong");
+        tabung.setBentuk("Silinder");
+        tabung.setR(7);
+        tabung.setPhi(3.14);
+        tabung.setTinggi(50);
+
+        cout << tabung.getNama() << endl;
+        cout << tabung.getBentuk() << endl;
+        cout << "r = " << tabung.getR() << endl;
+        cout << "phi = " << tabung.getPhi() << endl;
+        cout << "tinggi = " << tabung.getTinggi() << endl;
+        cout << "Luas Lingkaran = " << tabung.luas_link() << "cm2" << endl;
+        cout << "Luas Permukaan = " << tabung.luas_permukaan() << "cm2" << endl;
+        cout << "Volume = " << tabung.volume() << "cm3" << endl;
+
+        main();
     }
     else if(program == 5) {
+        Triangle triangle;
 
+        triangle.setAlas(10);
+        triangle.setTinggi(5);
+        triangle.luas();
     }
     return 0;
 }
