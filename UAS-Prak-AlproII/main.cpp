@@ -1,9 +1,121 @@
 #include <iostream>
+#include <stdio.h>
+#include <conio.h>
 
 using namespace std;
 
 class First {
+private :
+    struct data {
+        string norek;
+        string nama;
+        string alamat;
+        int saldo;
+        int persentase;
+        int lama;
+        data *next;
+    };
 
+    data *head, *tail;
+    data *input, *output;
+
+public :
+    void initialize() {
+        head = NULL;
+        tail = NULL;
+    }
+    int isEmpty(){
+        if(tail == NULL) {
+            return 1;
+        }
+        else return 0;
+    }
+    void insertData(string a, string b, string c, int d, int e, int f) {
+        data *input, *bantu;
+        input = new data;
+        input->norek = a;
+        input->nama = b;
+        input->alamat = c;
+        input->saldo = d;
+        input->persentase = e;
+        input->lama = f;
+        input->next = NULL;
+        if(isEmpty() == 1) {
+            head = input;
+            tail = input;
+            tail->next = NULL;
+        }
+        else {
+            tail->next = input;
+            tail = input;
+        }
+        cout << "data masuk";
+    }
+    void showData() {
+        data *output;
+        output = head;
+        if(isEmpty()==0){
+            int highest = 0;
+            int lowest = 0;
+            while(output!=NULL) {
+                if(highest < output->saldo) {
+                    highest = output->saldo;
+                }
+                if(lowest == 0) {
+                    lowest = output->saldo;
+                }
+                else if(lowest > output->saldo) {
+                    lowest = output->saldo;
+                }
+                cout << "Data seluruh nasabah" << endl;
+                cout << "No Rekening : " << output->norek << endl;
+                cout << "Nama : " << output->nama << endl;
+                cout << "Alamat : " << output->alamat << endl;
+                cout << "Saldo : " << output->saldo << endl;
+                cout << "Persentase : " << output->persentase << endl;
+                cout << "Lama : " << output->lama << endl;
+                cout << "Saldo Akhir : " << ((output->saldo/100)*output->persentase) << endl;
+                output = output->next;
+            }
+
+            cout << "Saldo tertinggi : " << highest << endl;
+            cout << "Saldo terendah : " << lowest << endl;
+
+            output = head;
+            while(output!=NULL) {
+                if(output->saldo <= 500000) {
+                    cout << "Data nasabah dengan saldo dibawah 500rb" << endl;
+                    cout << "No Rekening : " << output->norek << endl;
+                    cout << "Nama : " << output->nama << endl;
+                    cout << "Alamat : " << output->alamat << endl;
+                    cout << "Saldo : " << output->saldo << endl;
+                    cout << "Persentase : " << output->persentase << endl;
+                    cout << "Lama : " << output->lama << endl;
+                    cout << "Saldo Akhir : " << ((output->saldo/100)*output->persentase) << endl;
+                }
+                output = output->next;
+            }
+
+            output = head;
+            while(output!=NULL) {
+                if(output->saldo == 10000000) {
+                    cout << "Data nasabah dengan saldo 10jt" << endl;
+                    cout << "No Rekening : " << output->norek << endl;
+                    cout << "Nama : " << output->nama << endl;
+                    cout << "Alamat : " << output->alamat << endl;
+                    cout << "Saldo : " << output->saldo << endl;
+                    cout << "Persentase : " << output->persentase << endl;
+                    cout << "Lama : " << output->lama << endl;
+                    cout << "Saldo Akhir : " << ((output->saldo/100)*output->persentase) << endl;
+                }
+                output = output->next;
+            }
+
+        }
+        else {
+            cout << "Masih kosong\n";
+        }
+    }
 };
 
 class Second {
@@ -99,6 +211,39 @@ int main()
     cin >> mode;
     if(mode == 1) {
         First first;
+
+        string norek = "0705199425";
+        string nama = "Rai Raksa M";
+        string alamat = "Kp. Cililin Timur";
+        int saldo = 10500000;
+        int persentase = 16;
+        int lama = 1;
+
+        int jml;
+
+        cout << "Akan memasukkan berapa data nasabah? ";
+        cin >> jml;
+
+        first.initialize();
+        for(int i=0;i<jml;i++) {
+            cout << "Data ke-" << i+1 << endl;
+            cout << "No Rekening : ";
+            cin >> norek;
+            cout << "Nama : ";
+            cin >> nama;
+            cout << "Alamat : ";
+            cin >> alamat;
+            cout << "Saldo : ";
+            cin >> saldo;
+            cout << "Persentase : ";
+            cin >> persentase;
+            cout << "Lama : ";
+            cin >> lama;
+
+            first.insertData(norek, nama, alamat, saldo, persentase, lama);
+        }
+        first.showData();
+
         main();
     }
     else if(mode == 2) {
