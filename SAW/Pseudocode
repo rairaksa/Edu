@@ -1,0 +1,60 @@
+
+data = array() // data assesment
+kriteria = array() // data kriteria
+x = 0 // penentu koordinat x
+y = 0 // penentu koordinat y
+matriks = array() // penampung data matriks saw
+maks = array() // penampung nilai maks dari tiap kriteria
+bobot = array() // penampung nilai bobot dari kriteria
+normalisasi = array() // penampung  nilai dari hasil pembagian dengan bobot dari masing-masing kriteria
+rank = array() // penampung nilai assesment
+final = array() // finalisasi nilai assesment dengan penjumlahannya
+
+for i=1 to max(data) do
+  matriks[data[i]['applicant_id']] = data[i]['value']
+end for
+
+for i=1 to max(matriks) do 
+  # code...
+  for j=1 to max(matriks[i]) do 
+    # code...
+    if(maks[j]) then
+      if(maks[j] <= matriks[i]) then
+        # code...
+        maks[j] = matriks[i]
+      else 
+        maks[j] = maks[j]
+      endif
+    endif
+  end for
+end for
+
+for i=1 to max(matriks) do
+  for j=0 to j<max(matriks[i])
+    div = matriks[j]/maks[j]
+    normalisasi[i][] = div
+  end for
+end for
+
+for i=1 to max(kriteria) do
+  bobot[i] = kriteria["weight"]
+end for
+
+for i=1 to max(normalisasi) do 
+  # code...
+  for j=1 to max(normalisasi[i]) do
+    multiply = normalisasi[j] * bobot[j]
+    rank[i][] = multiply
+  end for
+end for
+
+sum = 0
+
+for i=1 to max(rank) do
+  for j=1 to max(rank[i]) do {
+    # code...
+    sum = sum + rank[j]
+  end for
+  final[i] = sum
+  sum = 0
+end for
